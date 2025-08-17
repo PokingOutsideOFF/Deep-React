@@ -41,8 +41,14 @@ body {
 
 .input-group {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 1.5rem;
+  padding: 0;
+
+  li{
+    list-style: none;
+  }
 }
 
 #user-input label {
