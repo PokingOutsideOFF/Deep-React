@@ -8,22 +8,28 @@ const tableHeadings = [
   "Investment Capital",
 ];
 export default function Result({ userInput }) {
-  const result = calculateInvestmentResults(userInput);
+  const result = [];
+  calculateInvestmentResults(userInput, result);
   const initialInvestment =
     result[0].valueEndOfYear - result[0].interest - result[0].annualInvestment;
+
   return (
     <table id="result">
       <thead>
         <tr>
           {tableHeadings.map((heading) => (
-            <th key={heading} scope="col">{heading}</th>
+            <th key={heading} scope="col">
+              {heading}
+            </th>
           ))}
         </tr>
       </thead>
       <tbody>
         {result.map((data) => {
           const totalInterest =
-            data.valueEndOfYear - data.annualInvestment * data.year - initialInvestment;
+            data.valueEndOfYear -
+            data.annualInvestment * data.year -
+            initialInvestment;
           const totalAmountInvested = data.valueEndOfYear - totalInterest;
           return (
             <tr key={data.year}>
